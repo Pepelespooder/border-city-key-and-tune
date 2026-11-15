@@ -14,3 +14,9 @@ In the repository's **Settings → Pages**, choose **Deploy from a branch**, sel
 
 The site lists car key services, ECU programming, PCM programming, vehicle tuning, phone 519-992-5092, and email Makina2445@outlook.com. It also describes the independent Windsor-Essex business and its origin story. Update the HTML files if these details change.
 
+
+## Design and quote flow
+
+The homepage uses an editorial layout with direct service links, a job selector, the existing owner story, and FAQs. `quote.html` collects a vehicle enquiry locally and prepares email/SMS/copy handoffs. Rates are intentionally unconfigured until approved. See [QUOTING.md](QUOTING.md) for the pricing model, configuration and launch checklist.
+
+Run quote logic checks with `node --test tests/quote-engine.test.cjs`.
