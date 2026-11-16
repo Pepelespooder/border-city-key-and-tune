@@ -5,7 +5,8 @@
   function calculateQuote(input, config, today = new Date().toISOString().slice(0, 10)) {
     const review = reason => ({ status: 'review', reason });
     if (!input || !config) return review('Please contact us to review this job.');
-    if (!keyServices.includes(input.service)) return review('Programming and tuning jobs need an individual compatibility and scope review.');
+    if (input.service === 'diagnostics') return review('I’ll review the symptoms and confirm diagnostic coverage, the work involved and pricing for your vehicle.');
+    if (!keyServices.includes(input.service)) return review('I’ll confirm vehicle compatibility, the work involved and pricing with you.');
     if ((input.service === 'spare' && input.workingKeys !== 'yes') || (input.service === 'lost' && input.workingKeys !== 'no') || input.workingKeys === 'unknown') return review('We need to confirm how many working keys remain before pricing this job.');
     if (input.keyType === 'unknown') return review('We’ll identify the key type before confirming a price.');
     const year = Number(input.vehicleYear);

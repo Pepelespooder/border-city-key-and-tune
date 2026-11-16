@@ -11,7 +11,7 @@ if (form) {
   const yearInput = document.getElementById('vehicle-year');
   yearInput.max = new Date().getFullYear() + 1;
   const labels = {
-    service: { spare: 'Spare / additional key', lost: 'All keys lost', program: 'Program customer-supplied key', module: 'ECU / PCM programming', tuning: 'Vehicle tuning' },
+    service: { spare: 'Spare / additional key', lost: 'All keys lost', program: 'Program customer-supplied key', diagnostics: 'Dealership-level diagnostics', module: 'ECU / PCM programming', tuning: 'Vehicle tuning' },
     keyType: { unknown: 'Not sure', blade: 'Basic metal key', transponder: 'Chipped ignition key', remote: 'Remote-head ignition key', smart: 'Push-button / smart key' },
     workingKeys: { unknown: 'Not sure', yes: 'At least one', no: 'None' },
     location: { windsor: 'Windsor', lasalle: 'LaSalle', tecumseh: 'Tecumseh', other: 'Elsewhere / discuss' }
