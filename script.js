@@ -78,7 +78,7 @@ if (form) {
       try { await navigator.clipboard.writeText(message); status.textContent = 'Copied. Paste it into your email or messaging app.'; }
       catch { status.textContent = 'Copy is unavailable here. Select the request text below to copy it manually.'; const text = element('textarea'); text.readOnly = true; text.value = message; text.setAttribute('aria-label', 'Quote request to copy'); result.append(text); text.focus(); text.select(); }
     });
-    result.append(email, sms, copy, status, element('p', 'Review and send the request in your email or messaging app. The form itself does not send it. I’ll confirm the work, price and appointment with you directly.', 'small-note'));
+    result.append(email, sms, copy, status, element('p', 'Review and send the request in your email or messaging app. The form itself does not send it. Your quote is free, with no obligation to book. Any work and charges will be agreed with you separately.', 'small-note'));
     result.focus();
   });
 }
