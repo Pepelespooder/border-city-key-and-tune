@@ -1,13 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 72" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 64" role="img" aria-labelledby="title desc">
   <title id="title">Border City Key &amp; Tune</title>
-  <desc id="desc">A compact BC monogram with a key detail and Border City Key &amp; Tune wordmark.</desc>
-  <g aria-hidden="true">
-    <rect x="1" y="1" width="70" height="70" rx="4" fill="#182324"/>
-    <path d="M15 13h21c10 0 16 5 16 13 0 5-2 9-7 11 6 2 9 6 9 12 0 9-7 15-18 15H15V13zm11 9v12h9c4 0 6-2 6-6s-2-6-6-6h-9zm0 21v12h10c4 0 7-2 7-6s-3-6-7-6H26z" fill="#f7f6f1"/>
-    <circle cx="56" cy="50" r="7" fill="#b9f06a"/>
-    <path d="M61 50h9m-4 0v4m-4-4v3" fill="none" stroke="#182324" stroke-width="2.2" stroke-linecap="square"/>
-    <text x="86" y="35" fill="#182324" font-family="Arial,Helvetica,sans-serif" font-size="27" font-weight="800" letter-spacing="-.8">BORDER CITY</text>
-    <path d="M87 47h34" stroke="#b9f06a" stroke-width="3"/>
-    <text x="130" y="53" fill="#182324" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" letter-spacing="3">KEY &amp; TUNE</text>
+  <desc id="desc">A simple automotive key icon beside the Border City Key &amp; Tune wordmark.</desc>
+  <g fill="none" stroke-linecap="square" stroke-linejoin="miter">
+    <circle cx="27" cy="32" r="17" stroke="#182324" stroke-width="5"/>
+    <circle cx="27" cy="32" r="7" fill="#b9f06a" stroke="none"/>
+    <path d="M44 32h26m-7 0v-7h-7m-5 7v7h-6" stroke="#182324" stroke-width="5"/>
   </g>
+  <text x="88" y="30" fill="#182324" font-family="Arial,Helvetica,sans-serif" font-size="25" font-weight="700" letter-spacing=".1">BORDER CITY</text>
+  <text x="89" y="51" fill="#395a39" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="700" letter-spacing="3">KEY &amp; TUNE</text>
 </svg>
