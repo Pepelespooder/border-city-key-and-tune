@@ -11,10 +11,10 @@ if (form) {
   const yearInput = document.getElementById('vehicle-year');
   yearInput.max = new Date().getFullYear() + 1;
   const labels = {
-    service: { spare: 'Spare / additional key', lost: 'All keys lost', program: 'Program customer-supplied key', diagnostics: 'Dealership-level diagnostics', module: 'ECU / PCM programming', tuning: 'Vehicle tuning' },
+    service: { spare: 'Spare / additional key', lost: 'All keys lost', program: 'Program a customer-supplied key', diagnostics: 'Dealership-level diagnostics', module: 'ECU / PCM programming', tuning: 'Vehicle tuning' },
     keyType: { unknown: 'Not sure', blade: 'Basic metal key', transponder: 'Chipped ignition key', remote: 'Remote-head ignition key', smart: 'Push-button / smart key' },
     workingKeys: { unknown: 'Not sure', yes: 'At least one', no: 'None' },
-    location: { windsor: 'Windsor', lasalle: 'LaSalle', tecumseh: 'Tecumseh', other: 'Elsewhere / discuss' }
+    location: { windsor: 'Windsor', lasalle: 'LaSalle', tecumseh: 'Tecumseh', other: 'Another location' }
   };
   const keyService = () => ['spare', 'lost', 'program'].includes(service.value);
   function syncFields() {
@@ -30,7 +30,7 @@ if (form) {
     result.innerHTML = initialResult;
     const note = document.createElement('p');
     note.className = 'stale-note';
-    note.textContent = 'Review your current details below to update the quote request.';
+    note.textContent = 'Your details have changed. Select “Review my request” to update the summary.';
     result.append(note);
   }
   form.addEventListener('input', invalidate);
@@ -54,11 +54,11 @@ if (form) {
     if (estimated) {
       result.append(element('p', `${range(quote.total)} CAD`, 'estimate-amount'));
       const lines = element('div', undefined, 'price-lines');
-      for (const [title, amount] of [['Service', range(quote.price)], ['Travel / service arrangement', money(quote.travel)], ['Tax', quote.tax ? range(quote.tax) : 'To be confirmed']]) {
+      for (const [title, amount] of [['Service', range(quote.price)], ['Travel', money(quote.travel)], ['Tax', quote.tax ? range(quote.tax) : 'To be confirmed']]) {
         const row = element('p'); row.append(element('span', title), element('strong', amount)); lines.append(row);
       }
-      result.append(lines, element('p', `Includes: ${quote.includes}`), element('p', `Rates valid through ${quote.validUntil}. ${quote.tax ? 'Includes configured tax.' : 'Tax is not included; confirm tax treatment directly.'}`));
-    } else result.append(element('p', quote.reason), element('p', 'No automatic price is available for this request. Send these details and we’ll review the job with you.'));
+      result.append(lines, element('p', `Includes: ${quote.includes}`), element('p', `Rates valid through ${quote.validUntil}. ${quote.tax ? 'Tax included.' : 'Tax is not included. I’ll confirm the final total with you.'}`));
+    } else result.append(element('p', quote.reason), element('p', 'Send the details below so I can review your request and discuss a price with you.'));
     const rows = [ ['Vehicle', `${data.vehicleYear} ${data.make.trim()} ${data.model.trim()}`], ['Service', labels.service[data.service]], ['Location', labels.location[data.location]] ];
     if (keyService()) rows.push(['Key type', labels.keyType[data.keyType]], ['Working keys', labels.workingKeys[data.workingKeys]]);
     if (data.part?.trim()) rows.push(['Module', data.part.trim()]);
@@ -66,11 +66,11 @@ if (form) {
     const summary = element('dl', undefined, 'quote-summary');
     for (const [label, value] of rows) { const row = element('div'); row.append(element('dt', label), element('dd', value)); summary.append(row); }
     result.append(summary);
-    const priceText = estimated ? `Indicative estimate: ${range(quote.total)} CAD. ${quote.tax ? 'Configured tax included.' : 'Tax to be confirmed; not included.'}\nIncludes: ${quote.includes}\nRate valid through: ${quote.validUntil}` : 'Price: individual review requested (no automatic price).';
-    const message = `Hello Border City Key & Tune,\n\n${rows.map(([label, value]) => `${label}: ${value}`).join('\n')}\n\n${priceText}\n\nPlease confirm compatibility, the final total and service arrangements.`;
-    const email = element('a', 'Open email with these details →', 'button button-primary');
+    const priceText = estimated ? `Estimated price: ${range(quote.total)} CAD. ${quote.tax ? 'Tax included.' : 'Tax not included; to be confirmed.'}\nIncludes: ${quote.includes}\nRate valid through: ${quote.validUntil}` : 'Price: please review the details and provide a quote.';
+    const message = `Hello Border City Key & Tune,\n\n${rows.map(([label, value]) => `${label}: ${value}`).join('\n')}\n\n${priceText}\n\nPlease let me know whether you can help, the cost and how to arrange an appointment.`;
+    const email = element('a', 'Continue in email →', 'button button-primary');
     email.href = `mailto:Makina2445@outlook.com?subject=${encodeURIComponent('Vehicle quote request — ' + rows[0][1])}&body=${encodeURIComponent(message)}`;
-    const sms = element('a', 'Open text message →', 'button secondary-action');
+    const sms = element('a', 'Continue in text →', 'button secondary-action');
     sms.href = `sms:+15199925092?body=${encodeURIComponent(message)}`;
     const copy = element('button', 'Copy quote request', 'button secondary-action'); copy.type = 'button';
     const status = element('p', '', 'copy-status'); status.setAttribute('role', 'status');
@@ -78,7 +78,7 @@ if (form) {
       try { await navigator.clipboard.writeText(message); status.textContent = 'Copied. Paste it into your email or messaging app.'; }
       catch { status.textContent = 'Copy is unavailable here. Select the request text below to copy it manually.'; const text = element('textarea'); text.readOnly = true; text.value = message; text.setAttribute('aria-label', 'Quote request to copy'); result.append(text); text.focus(); text.select(); }
     });
-    result.append(email, sms, copy, status, element('p', 'Nothing has been sent. Email and text open your own app; review and send there. This is an enquiry, not a booking. Compatibility and the final total must be confirmed before work begins.', 'small-note'));
+    result.append(email, sms, copy, status, element('p', 'Review and send the request in your email or messaging app. The form itself does not send it. I’ll confirm the work, price and appointment with you directly.', 'small-note'));
     result.focus();
   });
 }
