@@ -69,7 +69,7 @@ if (form) {
     const priceText = estimated ? `Estimated price: ${range(quote.total)} CAD. ${quote.tax ? 'Tax included.' : 'Tax not included; to be confirmed.'}\nIncludes: ${quote.includes}\nRate valid through: ${quote.validUntil}` : 'Price: please review the details and provide a quote.';
     const message = `Hello Border City Key & Tune,\n\n${rows.map(([label, value]) => `${label}: ${value}`).join('\n')}\n\n${priceText}\n\nPlease let me know whether you can help, the cost and how to arrange an appointment.`;
     const email = element('a', 'Continue in email →', 'button button-primary');
-    email.href = `mailto:Makina2445@outlook.com?subject=${encodeURIComponent('Vehicle quote request — ' + rows[0][1])}&body=${encodeURIComponent(message)}`;
+    email.href = `mailto:DavidBlake@BorderCityKey.com?subject=${encodeURIComponent('Vehicle quote request — ' + rows[0][1])}&body=${encodeURIComponent(message)}`;
     const sms = element('a', 'Continue in text →', 'button secondary-action');
     sms.href = `sms:+15199925092?body=${encodeURIComponent(message)}`;
     const copy = element('button', 'Copy quote request', 'button secondary-action'); copy.type = 'button';
