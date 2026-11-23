@@ -12,7 +12,7 @@ In the repository's **Settings → Pages**, choose **Deploy from a branch**, sel
 
 ## Business details
 
-The site lists car key services, ECU programming, PCM programming, vehicle tuning, phone 519-992-5092, and email Makina2445@outlook.com. It also describes the independent Windsor-Essex business and its origin story. Update the HTML files if these details change.
+The site lists car key services, ECU programming, PCM programming, vehicle tuning, phone 519-992-5092, and email DavidBlake@BorderCityKey.com. It also describes the independent Windsor-Essex business and its origin story. Update the HTML files if these details change.
 
 
 ## Design and quote flow
